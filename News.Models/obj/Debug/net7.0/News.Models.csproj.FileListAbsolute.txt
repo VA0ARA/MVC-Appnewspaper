@@ -1,0 +1,12 @@
+D:\Project\NewsApplication\News.Models\obj\Debug\net7.0\News.Models.csproj.AssemblyReference.cache
+D:\Project\NewsApplication\News.Models\obj\Debug\net7.0\News.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\NewsApplication\News.Models\obj\Debug\net7.0\News.Models.AssemblyInfoInputs.cache
+D:\Project\NewsApplication\News.Models\obj\Debug\net7.0\News.Models.AssemblyInfo.cs
+D:\Project\NewsApplication\News.Models\obj\Debug\net7.0\News.Models.csproj.CoreCompileInputs.cache
+D:\Project\NewsApplication\News.Models\bin\Debug\net7.0\News.Models.deps.json
+D:\Project\NewsApplication\News.Models\bin\Debug\net7.0\News.Models.dll
+D:\Project\NewsApplication\News.Models\bin\Debug\net7.0\News.Models.pdb
+D:\Project\NewsApplication\News.Models\obj\Debug\net7.0\News.Models.dll
+D:\Project\NewsApplication\News.Models\obj\Debug\net7.0\refint\News.Models.dll
+D:\Project\NewsApplication\News.Models\obj\Debug\net7.0\News.Models.pdb
+D:\Project\NewsApplication\News.Models\obj\Debug\net7.0\ref\News.Models.dll

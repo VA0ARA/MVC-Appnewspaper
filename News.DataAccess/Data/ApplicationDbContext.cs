@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using News.DataAccess.Configuration;
 using News.Models;
 namespace News.DataAccess.Data
 {
@@ -7,12 +8,25 @@ namespace News.DataAccess.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext>options):base(options)
         {
         }
+        #region DBSet
         public DbSet<Category> Categories { get; set; }
         public DbSet<Incident> Incidents { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Journalist> Journalists { get; set; }
+        #endregion
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            #region Config Table
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new IncidentEntityConfig());
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new CategoryConfig());
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new JornulistEntityConfig());
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new AdminEntityConfig());
+            #endregion
+            #region FristData
             modelBuilder.Entity<Category>().HasData(
                 new Category() { Id = 1, Name = "action"},
                 new Category() { Id = 2, Name = "SciFi"},
@@ -53,8 +67,7 @@ namespace News.DataAccess.Data
                     ImageUrl = ""
                 }
                 );
-
-
+            #endregion
         }
     }
 }

@@ -3,7 +3,7 @@ namespace News.Models.Enum
 {
     public enum Role
     {
-        [Display(Name= "Journalist")]
+        [Display(Name = "Journalist")]
         Journalist,
         [Display(Name = "Admin")]
         Admin

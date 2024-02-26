@@ -27,7 +27,7 @@ namespace News.DataAccess.Data
             modelBuilder.ApplyConfiguration(new AdminEntityConfig());
             #endregion
             #region FristData
-            modelBuilder.Entity<Category>().HasData(
+/*            modelBuilder.Entity<Category>().HasData(
                 new Category() { Id = 1, Name = "action"},
                 new Category() { Id = 2, Name = "SciFi"},
                 new Category() { Id = 3, Name = "History"}
@@ -66,7 +66,7 @@ namespace News.DataAccess.Data
                     CategoryId = 1,
                     ImageUrl = ""
                 }
-                );
+                );*/
             #endregion
         }
     }

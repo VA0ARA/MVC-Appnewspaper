@@ -6,13 +6,11 @@ namespace News.Models
 {
     public class Category
     {
-        [Key]
         public int Id { get; set; }
-        [Required]
-        [MaxLength(255)]
-        [DisplayName("Category Name")]
+        //[MaxLength(255)]
+       // [DisplayName("Category Name")]
         public string Name { get; set; }
-        [ValidateNever]
+        //[ValidateNever]
         public List<Incident>Incidents { get; set; }
     }
 }

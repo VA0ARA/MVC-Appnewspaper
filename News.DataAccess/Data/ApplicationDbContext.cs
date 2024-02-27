@@ -28,21 +28,21 @@ namespace News.DataAccess.Data
             #endregion
             #region FristData
 /*            modelBuilder.Entity<Category>().HasData(
-                new Category() { Id = 1, Name = "action"},
-                new Category() { Id = 2, Name = "SciFi"},
-                new Category() { Id = 3, Name = "History"}
-                   );
-            modelBuilder.Entity<Incident>().HasData(
+                new Category() { Id = 1, Name = "action" },
+                new Category() { Id = 2, Name = "SciFi" },
+                new Category() { Id = 3, Name = "History" }
+                   );*/
+/*            modelBuilder.Entity<Incident>().HasData(
                 new Incident
                 {
                     Id = 1,
                     Title = "Fortune of Time",
                     Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                     Overview = "Overview test",
-                    PermitToPublish=true,
-                    NumberOfView=0,
-                    CategoryId =2,
-                    ImageUrl=""
+                    PermitToPublish = true,
+                    NumberOfView = 0,
+                    CategoryId = 2,
+                    ImageUrl = ""
                 },
                 new Incident
                 {

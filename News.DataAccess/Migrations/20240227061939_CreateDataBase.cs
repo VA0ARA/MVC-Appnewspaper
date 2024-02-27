@@ -5,24 +5,11 @@
 namespace News.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class First : Migration
+    public partial class CreateDataBase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "ACategoryNs",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ACategoryNs", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Admins",
                 columns: table => new
@@ -38,6 +25,19 @@ namespace News.DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Admins", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -76,9 +76,9 @@ namespace News.DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_Incidents", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Incidents_ACategoryNs_CategoryId",
+                        name: "FK_Incidents_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "ACategoryNs",
+                        principalTable: "Categories",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Incidents_Journalists_JournalistId",
@@ -108,7 +108,7 @@ namespace News.DataAccess.Migrations
                 name: "Incidents");
 
             migrationBuilder.DropTable(
-                name: "ACategoryNs");
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Journalists");

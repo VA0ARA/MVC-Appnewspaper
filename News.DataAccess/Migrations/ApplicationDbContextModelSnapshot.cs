@@ -69,7 +69,7 @@ namespace News.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ACategoryNs", (string)null);
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("News.Models.Incident", b =>

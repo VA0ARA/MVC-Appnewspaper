@@ -11,8 +11,8 @@ using News.DataAccess.Data;
 namespace News.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240226153237_First")]
-    partial class First
+    [Migration("20240227061939_CreateDataBase")]
+    partial class CreateDataBase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,7 +72,7 @@ namespace News.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ACategoryNs", (string)null);
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("News.Models.Incident", b =>

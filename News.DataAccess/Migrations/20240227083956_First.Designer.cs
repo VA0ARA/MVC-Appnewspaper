@@ -11,8 +11,8 @@ using News.DataAccess.Data;
 namespace News.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240227062336_SeedDataCategoty")]
-    partial class SeedDataCategoty
+    [Migration("20240227083956_First")]
+    partial class First
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -137,6 +137,44 @@ namespace News.DataAccess.Migrations
                     b.HasIndex("JournalistId");
 
                     b.ToTable("Incidents", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 2,
+                            Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
+                            ImageUrl = "",
+                            JournalistId = 2,
+                            NumberOfView = 0,
+                            Overview = "Overview test",
+                            PermitToPublish = true,
+                            Title = "Fortune of Time"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 3,
+                            Description = "Persion Empire sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
+                            ImageUrl = "",
+                            JournalistId = 3,
+                            NumberOfView = 0,
+                            Overview = "Overview test",
+                            PermitToPublish = true,
+                            Title = "Persion Empire"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 1,
+                            Description = "Atomic Explotion sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
+                            ImageUrl = "",
+                            JournalistId = 1,
+                            NumberOfView = 0,
+                            Overview = "Overview test",
+                            PermitToPublish = true,
+                            Title = "Atomic Explotion"
+                        });
                 });
 
             modelBuilder.Entity("News.Models.Journalist", b =>
@@ -170,6 +208,35 @@ namespace News.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Journalists", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FirstName = "vahid",
+                            InsuranceNumber = 12,
+                            LastName = "ara",
+                            PhoneNumber = "12",
+                            Role = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            FirstName = "Ali",
+                            InsuranceNumber = 13,
+                            LastName = "attar",
+                            PhoneNumber = "13",
+                            Role = 0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            FirstName = "naser",
+                            InsuranceNumber = 14,
+                            LastName = "naseri",
+                            PhoneNumber = "14",
+                            Role = 0
+                        });
                 });
 
             modelBuilder.Entity("News.Models.Incident", b =>

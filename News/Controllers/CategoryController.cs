@@ -6,11 +6,13 @@ namespace News.Controllers
 {
     public class CategoryController : Controller
     {
+        #region SQL
         private readonly IUnitOfWork _unitOfWork;
         public CategoryController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
+        #endregion
         #region Get
         public IActionResult Index()
         {

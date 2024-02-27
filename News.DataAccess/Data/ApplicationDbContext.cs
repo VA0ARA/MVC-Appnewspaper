@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using News.DataAccess.Configuration;
 using News.Models;
+using News.Models.Enum;
+
 namespace News.DataAccess.Data
 {
     public class ApplicationDbContext:DbContext
@@ -32,41 +34,49 @@ namespace News.DataAccess.Data
                 new Category() { Id = 2, Name = "SciFi" },
                 new Category() { Id = 3, Name = "History" }
                    );
-            /*            modelBuilder.Entity<Incident>().HasData(
-                            new Incident
-                            {
-                                Id = 1,
-                                Title = "Fortune of Time",
-                                Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
-                                Overview = "Overview test",
-                                PermitToPublish = true,
-                                NumberOfView = 0,
-                                CategoryId = 2,
-                                ImageUrl = ""
-                            },
-                            new Incident
-                            {
-                                Id = 2,
-                                Title = "Persion Empire",
-                                Description = "Persion Empire sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
-                                Overview = "Overview test",
-                                PermitToPublish = true,
-                                NumberOfView = 0,
-                                CategoryId = 3,
-                                ImageUrl = ""
-                            },
-                            new Incident
-                            {
-                                Id = 3,
-                                Title = "Atomic Explotion",
-                                Description = "Atomic Explotion sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
-                                Overview = "Overview test",
-                                PermitToPublish = true,
-                                NumberOfView = 0,
-                                CategoryId = 1,
-                                ImageUrl = ""
-                            }
-                            );*/
+            modelBuilder.Entity<Journalist>().HasData(
+               new Journalist() { Id = 1, FirstName = "vahid", LastName = "ara", InsuranceNumber = 12, Role = Role.Journalist, PhoneNumber = "12" },
+               new Journalist() { Id = 2, FirstName = "Ali", LastName = "attar", InsuranceNumber = 13, Role = Role.Journalist, PhoneNumber = "13" },
+               new Journalist() { Id = 3, FirstName = "naser", LastName = "naseri", InsuranceNumber = 14, Role = Role.Journalist, PhoneNumber = "14" }
+       );
+            modelBuilder.Entity<Incident>().HasData(
+                new Incident
+                {
+                    Id = 1,
+                    Title = "Fortune of Time",
+                    Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
+                    Overview = "Overview test",
+                    PermitToPublish = true,
+                    NumberOfView = 0,
+                    CategoryId = 2,
+                    JournalistId = 2,
+                    ImageUrl = ""
+                },
+                new Incident
+                {
+                    Id = 2,
+                    Title = "Persion Empire",
+                    Description = "Persion Empire sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
+                    Overview = "Overview test",
+                    PermitToPublish = true,
+                    NumberOfView = 0,
+                    CategoryId = 3,
+                    JournalistId = 3,
+                    ImageUrl = ""
+                },
+                new Incident
+                {
+                    Id = 3,
+                    Title = "Atomic Explotion",
+                    Description = "Atomic Explotion sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
+                    Overview = "Overview test",
+                    PermitToPublish = true,
+                    NumberOfView = 0,
+                    CategoryId = 1,
+                    JournalistId = 1,
+                    ImageUrl = ""
+                }
+                );
             #endregion
         }
     }

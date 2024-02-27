@@ -2,10 +2,12 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace News.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateDataBase : Migration
+    public partial class First : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -85,6 +87,36 @@ namespace News.DataAccess.Migrations
                         column: x => x.JournalistId,
                         principalTable: "Journalists",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "action" },
+                    { 2, "SciFi" },
+                    { 3, "History" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Journalists",
+                columns: new[] { "Id", "FirstName", "InsuranceNumber", "LastName", "PhoneNumber", "Role" },
+                values: new object[,]
+                {
+                    { 1, "vahid", 12, "ara", "12", 0 },
+                    { 2, "Ali", 13, "attar", "13", 0 },
+                    { 3, "naser", 14, "naseri", "14", 0 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Incidents",
+                columns: new[] { "Id", "CategoryId", "Description", "ImageUrl", "JournalistId", "NumberOfView", "Overview", "PermitToPublish", "Title" },
+                values: new object[,]
+                {
+                    { 1, 2, "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ", "", 2, 0, "Overview test", true, "Fortune of Time" },
+                    { 2, 3, "Persion Empire sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ", "", 3, 0, "Overview test", true, "Persion Empire" },
+                    { 3, 1, "Atomic Explotion sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ", "", 1, 0, "Overview test", true, "Atomic Explotion" }
                 });
 
             migrationBuilder.CreateIndex(

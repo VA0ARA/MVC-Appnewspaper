@@ -7,10 +7,11 @@ namespace News.Models
     public class Category
     {
         public int Id { get; set; }
-        //[MaxLength(255)]
-       // [DisplayName("Category Name")]
+        [Required]
+        [MaxLength(50, ErrorMessage = "کوتاه تر بنویسید")]
+        [DisplayName("نام گروه خبری")]
         public string Name { get; set; }
-        //[ValidateNever]
+        [ValidateNever]
         public List<Incident>Incidents { get; set; }
     }
 }

@@ -262,3 +262,4 @@ D:\Project\NewsApplication\News\bin\Debug\net7.0\News.DataAccess.dll
 D:\Project\NewsApplication\News\bin\Debug\net7.0\News.Models.dll
 D:\Project\NewsApplication\News\bin\Debug\net7.0\News.DataAccess.pdb
 D:\Project\NewsApplication\News\bin\Debug\net7.0\News.Models.pdb
+D:\Project\NewsApplication\News\obj\Debug\net7.0\News.MvcApplicationPartsAssemblyInfo.cs

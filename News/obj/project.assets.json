@@ -4315,7 +4315,8 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Microsoft.AspNet.Mvc": "5.3.0",
-          "Microsoft.AspNetCore.Mvc.Core": "2.2.5"
+          "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.11"
         },
         "compile": {
           "bin/placeholder/News.Models.dll": {}

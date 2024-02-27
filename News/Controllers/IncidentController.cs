@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using News.DataAccess.IReposetory;
 using News.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace News.Controllers
 {
@@ -17,12 +18,21 @@ namespace News.Controllers
         public IActionResult Index()
         {
             List<Incident> Incidents = _unitOfWork.incident.GetAll().ToList();
+
             return View(Incidents);
         }
         #endregion
         #region Create
         public IActionResult Create()
         {
+            IEnumerable<SelectListItem> CategoryList= _unitOfWork.Category.GetAll()
+            .Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            });
+           // ViewBag.CategoryList = CategoryList;
+            ViewData["CategoryList"] = CategoryList;
             return View();
         }
         [HttpPost]

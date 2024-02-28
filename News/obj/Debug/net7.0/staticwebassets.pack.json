@@ -5,6 +5,18 @@
       "PackagePath": "staticwebassets\\News.bundle.scp.css"
     },
     {
+      "Id": "D:\\Project\\NewsApplication\\News\\wwwroot\\Image\\Incident\\090fcd6b-3a40-4b67-a2bb-d0dd5bf6dd6c.jpg",
+      "PackagePath": "staticwebassets\\Image\\Incident\\090fcd6b-3a40-4b67-a2bb-d0dd5bf6dd6c.jpg"
+    },
+    {
+      "Id": "D:\\Project\\NewsApplication\\News\\wwwroot\\Image\\Incident\\2d3b0d7d-fd5c-4fe4-8a5d-bfb0707bcab9.jpg",
+      "PackagePath": "staticwebassets\\Image\\Incident\\2d3b0d7d-fd5c-4fe4-8a5d-bfb0707bcab9.jpg"
+    },
+    {
+      "Id": "D:\\Project\\NewsApplication\\News\\wwwroot\\Image\\Incident\\759aa28a-fde1-4296-8a97-ae8e7b38455b.jpg",
+      "PackagePath": "staticwebassets\\Image\\Incident\\759aa28a-fde1-4296-8a97-ae8e7b38455b.jpg"
+    },
+    {
       "Id": "D:\\Project\\NewsApplication\\News\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

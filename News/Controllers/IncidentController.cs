@@ -3,6 +3,7 @@ using News.DataAccess.IReposetory;
 using News.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.IdentityModel.Tokens;
 
 namespace News.Controllers
 {
@@ -66,7 +67,7 @@ namespace News.Controllers
         }
         #endregion
         #region Edit
-        public IActionResult Edit(int? id)
+        public IActionResult Edit(int? id, IFormFile? file)
         {
             if (id == null || id == 0)
             {
@@ -77,11 +78,39 @@ namespace News.Controllers
             {
                 return NotFound();
             }
+
+            IEnumerable<SelectListItem> CategoryList = _unitOfWork.Category.GetAll()
+                    .Select(u => new SelectListItem
+                   {
+                         Text = u.Name,
+                         Value = u.Id.ToString()
+                    });
+            ViewData["CategoryList"] = CategoryList;
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+            if (file != null)
+            {
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                string IncidentPath = Path.Combine(wwwRootPath, @"Image\Incident");
+                if(!string.IsNullOrEmpty(IncidentFormdb.ImageUrl)) {
+                    var oldImagePath = Path.Combine(wwwRootPath, IncidentFormdb.ImageUrl.TrimStart('\\'));
+                    if(System.IO.File.Exists(oldImagePath))
+                    {
+                        System.IO.File.Delete(oldImagePath);
+                    }
+                }
+                using (var fileStream = new FileStream(Path.Combine(IncidentPath, fileName), FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
+                }
+                IncidentFormdb.ImageUrl = @"\Image\Incident" + fileName;
+            }
+
             return View(IncidentFormdb);
         }
         [HttpPost]
         public IActionResult Edit(Incident obj)
         {
+
 
             if (ModelState.IsValid)
             {

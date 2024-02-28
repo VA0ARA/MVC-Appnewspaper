@@ -2,16 +2,19 @@
 using News.DataAccess.IReposetory;
 using News.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Hosting;
 
 namespace News.Controllers
 {
     public class IncidentController : Controller
     {
-        #region SQL
+        #region SQL-Image
         private readonly IUnitOfWork _unitOfWork;
-        public IncidentController(IUnitOfWork unitOfWork)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public IncidentController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
         {
             _unitOfWork = unitOfWork;
+            _webHostEnvironment = webHostEnvironment;
         }
         #endregion
         #region Get
@@ -36,8 +39,19 @@ namespace News.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Incident obj)
+        public IActionResult Create(Incident obj, IFormFile? file)
         {
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+            if (file != null)
+            {
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                string IncidentPath = Path.Combine(wwwRootPath, @"Image\Incident");
+                using (var fileStream = new FileStream(Path.Combine(IncidentPath, fileName), FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
+                }
+                obj.ImageUrl = @"\Image\Incident" + fileName;
+            }
             obj.PermitToPublish = true;
             obj.NumberOfView = 0;
             if (ModelState.IsValid)

@@ -21,4 +21,8 @@
     <ProjectReference Include="..\News.Models\News.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Image\Incident\" />
+  </ItemGroup>
+
 </Project>

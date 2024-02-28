@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using News.DataAccess.IReposetory;
 using News.Models;
 using System.Diagnostics;
 
@@ -6,16 +7,27 @@ namespace News.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        #region SQL-Image
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public HomeController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
         {
-            _logger = logger;
+            _unitOfWork = unitOfWork;
+            _webHostEnvironment = webHostEnvironment;
         }
+        #endregion
 
         public IActionResult Index()
         {
-            return View();
+            List<Incident> Incidents = _unitOfWork.incident.GetAll().ToList();
+
+            return View(Incidents);
+        }
+        public IActionResult Details(int id)
+        {
+            Incident incident = _unitOfWork.incident.Get(u => u.Id == id);
+
+            return View(incident);
         }
 
         public IActionResult Privacy()

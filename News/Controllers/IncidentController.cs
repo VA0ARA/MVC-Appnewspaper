@@ -2,8 +2,7 @@
 using News.DataAccess.IReposetory;
 using News.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.IdentityModel.Tokens;
+
 
 namespace News.Controllers
 {
@@ -27,8 +26,7 @@ namespace News.Controllers
         }
         #endregion
         #region Create
-        public IActionResult Create()
-        {
+        public IActionResult Create()        {
             IEnumerable<SelectListItem> CategoryList= _unitOfWork.Category.GetAll()
             .Select(u => new SelectListItem
             {
@@ -51,7 +49,8 @@ namespace News.Controllers
                 {
                     file.CopyTo(fileStream);
                 }
-                obj.ImageUrl = @"\Image\Incident" + fileName;
+                // obj.ImageUrl = @"\Image\Incident" + fileName;
+                obj.ImageUrl =fileName;
             }
             obj.PermitToPublish = true;
             obj.NumberOfView = 0;
@@ -78,7 +77,7 @@ namespace News.Controllers
             {
                 return NotFound();
             }
-
+            #region join category
             IEnumerable<SelectListItem> CategoryList = _unitOfWork.Category.GetAll()
                     .Select(u => new SelectListItem
                    {
@@ -86,32 +85,37 @@ namespace News.Controllers
                          Value = u.Id.ToString()
                     });
             ViewData["CategoryList"] = CategoryList;
+            #endregion
+            return View(IncidentFormdb);
+        }
+        [HttpPost]
+        public IActionResult Edit(Incident obj, IFormFile? file)
+        {
+
+            #region Image
             string wwwRootPath = _webHostEnvironment.WebRootPath;
             if (file != null)
             {
+                //delete
                 string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
                 string IncidentPath = Path.Combine(wwwRootPath, @"Image\Incident");
-                if(!string.IsNullOrEmpty(IncidentFormdb.ImageUrl)) {
-                    var oldImagePath = Path.Combine(wwwRootPath, IncidentFormdb.ImageUrl.TrimStart('\\'));
-                    if(System.IO.File.Exists(oldImagePath))
+                if (!string.IsNullOrEmpty(obj.ImageUrl))
+                {
+                    var oldImagePath = Path.Combine(wwwRootPath, obj.ImageUrl.TrimStart('\\'));
+                    if (System.IO.File.Exists(oldImagePath))
                     {
                         System.IO.File.Delete(oldImagePath);
                     }
                 }
+                //upload
                 using (var fileStream = new FileStream(Path.Combine(IncidentPath, fileName), FileMode.Create))
                 {
                     file.CopyTo(fileStream);
                 }
-                IncidentFormdb.ImageUrl = @"\Image\Incident" + fileName;
+                //update
+                obj.ImageUrl = fileName;
             }
-
-            return View(IncidentFormdb);
-        }
-        [HttpPost]
-        public IActionResult Edit(Incident obj)
-        {
-
-
+            #endregion
             if (ModelState.IsValid)
             {
                 _unitOfWork.incident.Update(obj);

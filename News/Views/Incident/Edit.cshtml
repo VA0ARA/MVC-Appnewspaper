@@ -9,6 +9,8 @@
     </div>
     <div class="card-body">
         <form method="post" class="row" enctype="multipart/form-data">
+            <input asp-for="Id"hidden/>
+            <input asp-for="ImageUrl" hidden />
             <div class="row">
                 <div class="col-10">
                     <div class="border p-3 mt-4">
@@ -56,7 +58,7 @@
                     </div>
                 </div>
                 <div class="col-2">
-                    <img src="@Model.ImageUrl" with="100%"
+                    <img src="~/Image/Incident/@Model.ImageUrl" width="100%"
                     style="border-radius:5px; border:1px solid #bbb9b9"/>
                 </div>
             </div>

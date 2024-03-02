@@ -20,10 +20,19 @@ namespace News.Controllers
         #region Get
         public IActionResult Index()
         {
+            List<Incident>IncidentsOfCurrenJournalist = new List<Incident>();
             List<Incident> Incidents = _unitOfWork.incident.GetAll().ToList();
-
-            return View(Incidents);
+            foreach(var Item in Incidents )
+            {
+                if (Item.JournalistId == DataAccess.Data.CurrentUserId.CurrentId)
+                {
+                    IncidentsOfCurrenJournalist.Add(Item);
+                }
+            }
+            return View(IncidentsOfCurrenJournalist);
         }
+        //Admin get
+
         #endregion
         #region Create
         public IActionResult Create()        {
@@ -52,8 +61,9 @@ namespace News.Controllers
                 // obj.ImageUrl = @"\Image\Incident" + fileName;
                 obj.ImageUrl =fileName;
             }
-            obj.PermitToPublish = true;
+            obj.PermitToPublish = false;
             obj.NumberOfView = 0;
+            obj.JournalistId = DataAccess.Data.CurrentUserId.CurrentId;
             if (ModelState.IsValid)
             {
                 _unitOfWork.incident.Add(obj);

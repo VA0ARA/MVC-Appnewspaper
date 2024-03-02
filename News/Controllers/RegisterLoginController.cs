@@ -32,13 +32,12 @@ namespace News.Controllers
             if (Selectedjornalist != null)
             {
                 DataAccess.Data.CurrentUserId.CurrentId= Selectedjornalist.Id;
-                return View("JournalistProfile","Journalist");
-
+                return RedirectToAction("JournalistProfile", "Journalist");
             }
             else if(Selectedadmin != null)
             {
                 DataAccess.Data.CurrentUserId.CurrentId = Selectedadmin.Id;
-                return View("AdminProfile","Admin");
+                return RedirectToAction("AdminProfile","Admin");
             }
             else
             {
@@ -121,22 +120,7 @@ namespace News.Controllers
 
 
         //Journalist
-        #region Edit
-        public IActionResult Edit(int? id)
-        {
-            Journalist? memberFormdb = _unitOfWork.jornalist.Get(u => u.Id == id);
-            return View(memberFormdb);
-        }
-        [HttpPost]
-        public IActionResult Edit(Journalist ob)
-        {
-            _unitOfWork.jornalist.Update(ob);
-            _unitOfWork.Save();
-            TempData["success"] = "information Edit success";
-            return RedirectToAction("Index","Home");
-        }
 
-        #endregion
         #region Deleted
         public IActionResult Delete(int? id)
         {

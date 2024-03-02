@@ -64,20 +64,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5jaWRlbnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/NewsApplication/News/Views/Jornalist/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9ybmFsaXN0XERlbGV0ZS5jc2h0bWw=
+[D:/Project/NewsApplication/News/Views/Journalist/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm91cm5hbGlzdFxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/NewsApplication/News/Views/Jornalist/Detail.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9ybmFsaXN0XERldGFpbC5jc2h0bWw=
+[D:/Project/NewsApplication/News/Views/Journalist/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm91cm5hbGlzdFxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/NewsApplication/News/Views/Jornalist/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9ybmFsaXN0XEVkaXQuY3NodG1s
+[D:/Project/NewsApplication/News/Views/Journalist/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm91cm5hbGlzdFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project/NewsApplication/News/Views/Jornalist/JournalistProfile.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9ybmFsaXN0XEpvdXJuYWxpc3RQcm9maWxlLmNzaHRtbA==
+[D:/Project/NewsApplication/News/Views/Journalist/JournalistProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm91cm5hbGlzdFxKb3VybmFsaXN0UHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Project/NewsApplication/News/Views/RegisterLogin/Create.cshtml]

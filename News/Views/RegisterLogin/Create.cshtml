@@ -1,0 +1,57 @@
+﻿@using News.Models.Enum
+@model News.Models.ModelView.UserMV
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3 ">
+        <div class="row">
+            <div class=" col-12 text-center">
+                <h2 class="text-white py-2">فرم ثبت نام</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <form method="post">
+            <div class="border p-3 mt-4">
+                <div asp-validation-summary="All"></div>
+                <div class="form-floating py-2  col-12">
+                    <input asp-for="FirstName" class="form-control border-0 shadow" />
+                    <label asp-for="FirstName" class="ms-2"></label>
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-2  col-12">
+                    <input asp-for="LastName" class="form-control border-0 shadow" />
+                    <label asp-for="LastName" class="ms-2"></label>
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-2  col-12">
+                    <input asp-for="InsuranceNumber" class="form-control border-0 shadow" />
+                    <label asp-for="InsuranceNumber" class="ms-2"></label>
+                    <span asp-validation-for="InsuranceNumber" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-2  col-12">
+                    <labal asp-for="Role" class="control-labal"></labal>
+                    <select asp-for="Role" class="form-control" asp-items="Html.GetEnumSelectList<Role>()" multiple>
+                        <option value="">لطفا انتخاب کنید</option>
+                    </select>
+                </div>
+                </div>
+                <div class="form-floating py-2  col-12">
+                    <input asp-for="PhoneNumber" class="form-control border-0 shadow" />
+                    <label asp-for="PhoneNumber" class="ms-2"></label>
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-6 col-3">
+                        <button type="submit" class="btn btn-primary form-control">ثبت نام</button>
+                    </div>
+                    <div class="col-6 col-3">
+                    <a asp-controller="RegisterLogin" asp-action="Index" class="btn btn-secondary border form-control">ورود</a>
+                    </div>
+                </div>
+        </form>
+    </div>
+</div>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

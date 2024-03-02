@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Jornalist\" />
     <Folder Include="Views\Admine\" />
     <Folder Include="wwwroot\Image\Incident\" />
   </ItemGroup>

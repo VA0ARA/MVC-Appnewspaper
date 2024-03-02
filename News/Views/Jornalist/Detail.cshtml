@@ -1,0 +1,46 @@
+﻿@model News.Models.Journalist
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                نام
+            </th>
+            <th>
+                نام خانوادگی
+            </th>
+            <th>
+                شماره بیمه
+            </th>
+            <th>
+                شغل
+            </th>
+            <th>
+                شماره موبایل
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>
+                @Model.FirstName
+            </th>
+            <th>
+                @Model.LastName
+            </th>
+            <th>
+                @Model.InsuranceNumber
+            </th>
+            <th>
+                @Model.Role
+            </th>
+            <th>
+                @Model.PhoneNumber
+            </th>
+            <th>
+                <div class="col-6 col-3">
+                    <a asp-controller="Home" asp-action="Search" class="btn btn-secondary border form-control">بازگشت</a>
+                </div>
+            </th>
+        </tr>
+    </tbody>
+</table>

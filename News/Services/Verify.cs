@@ -42,6 +42,7 @@
             }
             return false;
         }
+        //brithDay
         public List<string>ExtractNumber(string input)
         {
             List<string>list=new List<string>();

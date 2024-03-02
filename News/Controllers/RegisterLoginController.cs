@@ -17,9 +17,35 @@ namespace News.Controllers
             _unitOfWork = unitOfWork;
 
         }
+        #region Login
         public IActionResult Index()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult Index(LoginDtos loginDtos)
+        {
+            List<Journalist> journalistList = _unitOfWork.jornalist.GetAll().ToList();
+            List<Admin>AdminList = _unitOfWork.admin.GetAll().ToList();
+            var Selectedjornalist=journalistList.FirstOrDefault(p=>p.InsuranceNumber==loginDtos.InsuranceNumber && p.PhoneNumber==loginDtos.PhoneNumber);
+             var Selectedadmin = AdminList.FirstOrDefault(p => p.InsuranceNumber == loginDtos.InsuranceNumber && p.PhoneNumber == loginDtos.PhoneNumber);
+            if (Selectedjornalist != null)
+            {
+                DataAccess.Data.CurrentUserId.CurrentId= Selectedjornalist.Id;
+                return View("JournalistProfile","Journalist");
+
+            }
+            else if(Selectedadmin != null)
+            {
+                DataAccess.Data.CurrentUserId.CurrentId = Selectedadmin.Id;
+                return View("AdminProfile","Admin");
+            }
+            else
+            {
+                NotFound();
+                TempData["error"] = "can find any one try again";
+                return View();
+            }
         }
         #region Create
         public IActionResult Create()
@@ -27,6 +53,7 @@ namespace News.Controllers
             return View();
         }
         [HttpPost]
+        //Bug validation
         public IActionResult Create(UserMV user)
         {
             #region Validation PersonExsit
@@ -88,6 +115,11 @@ namespace News.Controllers
             return View();
         }
         #endregion
+
+
+        #endregion
+
+
         //Journalist
         #region Edit
         public IActionResult Edit(int? id)

@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Project\NewsApplication\News
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Project/NewsApplication/News/Views/Admine/AdminProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5lXEFkbWluUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Project/NewsApplication/News/Views/Category/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -70,6 +74,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Project/NewsApplication/News/Views/Jornalist/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9ybmFsaXN0XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project/NewsApplication/News/Views/Jornalist/JournalistProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9ybmFsaXN0XEpvdXJuYWxpc3RQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Project/NewsApplication/News/Views/RegisterLogin/Create.cshtml]

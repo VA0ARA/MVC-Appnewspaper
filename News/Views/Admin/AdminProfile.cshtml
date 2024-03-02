@@ -1,0 +1,49 @@
+﻿@model News.Models.Admin
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                نام
+            </th>
+            <th>
+                نام خانوادگی
+            </th>
+            <th>
+                شماره بیمه
+            </th>
+            <th>
+                شغل
+            </th>
+            <th>
+                شماره موبایل
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>
+                @Model.FirstName
+            </th>
+            <th>
+                @Model.LastName
+            </th>
+            <th>
+                @Model.InsuranceNumber
+            </th>
+            <th>
+                @Model.Role
+            </th>
+            <th>
+                @Model.PhoneNumber
+            </th>
+            <th>
+                <div class="col-6 col-3">
+                    <a asp-controller="Incident" asp-action="TotalIncident" class="btn btn-secondary border form-control">لیست خبرها</a>
+                </div>
+                <div class="col-6 col-3">
+                    <a asp-controller="Admin" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary border form-control">ویرایش پروفایل</a>
+                </div>
+            </th>
+        </tr>
+    </tbody>
+</table>

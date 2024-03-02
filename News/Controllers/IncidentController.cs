@@ -32,6 +32,11 @@ namespace News.Controllers
             return View(IncidentsOfCurrenJournalist);
         }
         //Admin get
+        public IActionResult TotalIncident()
+        {
+            List<Incident> Incidents = _unitOfWork.incident.GetAll().ToList();
+            return View(Incidents);
+        }
 
         #endregion
         #region Create
@@ -164,6 +169,20 @@ namespace News.Controllers
             TempData["success"] = "Incident Deleted success";
             return RedirectToAction("Index");
 
+        }
+        #endregion
+        #region GetPermision
+        public IActionResult Getpermision(int? id) {
+            var incidentobj=_unitOfWork.incident.Get(p=>p.Id == id);   
+            return View(incidentobj);
+        }
+        [HttpPost]
+        public IActionResult Getpermision(Incident obj)
+        {
+                _unitOfWork.incident.Update(obj);
+                _unitOfWork.Save();
+                TempData["success"] = "permission Edit success";
+            return RedirectToAction("TotalIncident");
         }
         #endregion
     }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Rj/r3aB4vUtewNqBDnmhVE5ocWd0l5Pq1frpPcfHQf0=",
+  "Hash": "vYdf+U4mKTS5EKv/YVVnfH+cZPXmC9MfN+LYLxDb3V8=",
   "Source": "News",
   "BasePath": "_content/News",
   "Mode": "Default",
@@ -151,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Image\\Incident\\c11b8c3c-946f-41ff-9b49-68b8f1c546a7.jpg"
+    },
+    {
+      "Identity": "D:\\Project\\NewsApplication\\News\\wwwroot\\Image\\Incident\\cc8046f6-bf43-47fe-b393-726d58b7b705.jpg",
+      "SourceId": "News",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Project\\NewsApplication\\News\\wwwroot\\",
+      "BasePath": "_content/News",
+      "RelativePath": "Image/Incident/cc8046f6-bf43-47fe-b393-726d58b7b705.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Image\\Incident\\cc8046f6-bf43-47fe-b393-726d58b7b705.jpg"
     },
     {
       "Identity": "D:\\Project\\NewsApplication\\News\\wwwroot\\js\\site.js",

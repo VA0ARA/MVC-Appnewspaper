@@ -1,7 +1,4 @@
 ﻿@model News.Models.Incident
-
-<form method="post">
-    <input hidden asp-for="Id" />
     <div class="card shadow border-0 mt-4 mb-4">
         <div class="card-header bg-secondary bg-gradient text-light py-4">
             <div class="row">
@@ -33,4 +30,29 @@
             </div>
         </div>
     </div>
-</form>
+@*<form method="post">*@
+@*    <input hidden asp-for="Id" />*@
+@*</form>*@
+<div class="card shadow border-0 mt-4 mb-4">
+<div class="card-header bg-secondary bg-gradient text-light py-4">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h5 class="text-white text-uppercase">Number Of View</h5>
+            <p class="text-white-50 fw-semibold mb-0">by @Model.Overview</p>
+                <button type="button" class="btn btn-dark">Like</button>
+                <p class="text-white text-uppercase">Number Of like</p>
+                <button type="button" class="btn btn-dark">DisLike</button>
+                <p class="text-white text-uppercase">Number Of dislike</p>
+        </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-dark" type="button">اعمال نظر</button>
+                </div>
+                <input type="text" class="form-control" placeholder="نظر شما چیست" aria-label="" aria-describedby="basic-addon1">
+            </div>
+    </div>
+</div>
+    </div>
+
+
+

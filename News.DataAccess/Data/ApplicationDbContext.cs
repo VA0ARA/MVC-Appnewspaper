@@ -32,7 +32,7 @@ namespace News.DataAccess.Data
             modelBuilder.ApplyConfiguration(new FeedBackEntityConfig());
             #endregion
             #region FristData
-            modelBuilder.Entity<Category>().HasData(
+/*            modelBuilder.Entity<Category>().HasData(
                 new Category() { Id = 1, Name = "action", capacity = 8 },
                 new Category() { Id = 2, Name = "SciFi", capacity = 8 },
                 new Category() { Id = 3, Name = "History", capacity = 8 }
@@ -76,7 +76,7 @@ namespace News.DataAccess.Data
                     JournalistId = 1,
                     ImageUrl = ""
                 }
-                );
+                );*/
             #endregion
         }
     }

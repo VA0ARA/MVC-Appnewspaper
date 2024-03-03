@@ -4,24 +4,13 @@
     <div class="card-header bg-secondary bg-gradient ml-0 py-3 ">
         <div class="row">
             <div class=" col-12 text-center">
-                <h2 class="text-white py-2"> لیست خبرها</h2>
+                <h2 class="text-white py-2"> لیست گروه های خبری</h2>
             </div>
         </div>
     </div>
     <div class="card-body p-4">
         <div class="row pb-3">
-            <div class="col-6">
-            </div>
             <div class="col-6 text-end">
-                <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
-                    <i class="bi bi-bag-plus"></i> ساخت گروه خبری جدید
-                </a>
-            </div>
-            <div class="col-6 text-end">
-                <a asp-controller="Admin" asp-action="AdminProfile" class="btn btn-primary">
-                     بازگشت به پروفایل
-                </a>
-            </div>
         </div>
         <table class="table table-bordered table-striped">
             <thead>
@@ -59,7 +48,11 @@
                 }
             </tbody>
         </table>
-
+        <div class="col-6 text-end">
+            <a asp-controller="Admin" asp-action="AdminProfile" class="btn btn-primary">
+                بازگشت به پروفایل
+            </a>
+        </div>
     </div>
 </div>
 

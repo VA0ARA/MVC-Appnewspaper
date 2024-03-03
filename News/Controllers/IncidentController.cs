@@ -70,10 +70,23 @@ namespace News.Controllers
             obj.JournalistId = DataAccess.Data.CurrentUserId.CurrentId;
             if (ModelState.IsValid)
             {
-                _unitOfWork.incident.Add(obj);
-                _unitOfWork.Save();
-                TempData["success"] = "Incident create success";
-                return RedirectToAction("Index");
+                var cat=_unitOfWork.Category.Get(u => u.Id == obj.CategoryId);
+                cat.capacity= cat.capacity-1;
+                if (cat.capacity == 0)
+                {
+                    TempData["error"] = "This category is full  Now!!";
+                    return View();
+                }
+                else
+                {
+                    _unitOfWork.Category.Update(cat);
+                    _unitOfWork.Save();
+                    _unitOfWork.incident.Add(obj);
+                    _unitOfWork.Save();
+                    TempData["success"] = "Incident create success";
+                    return RedirectToAction("Index");
+                }
+
             }
             return View();
 

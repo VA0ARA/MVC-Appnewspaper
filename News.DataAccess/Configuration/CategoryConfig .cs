@@ -10,6 +10,7 @@ namespace News.DataAccess.Configuration
             builder.ToTable("Categories").HasKey(p => p.Id);
             builder.Property(b => b.Id).IsRequired();
             builder.Property(b => b.Name).HasMaxLength(50).IsRequired();
+            builder.Property(b => b.capacity).IsRequired();
         }
     }
 }

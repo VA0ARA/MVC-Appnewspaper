@@ -15,6 +15,7 @@ namespace News.DataAccess.Data
         public DbSet<Incident> Incidents { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Journalist> Journalists { get; set; }
+        public DbSet<FeedBack> FeedBacks { get; set; }
         #endregion
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,12 +28,14 @@ namespace News.DataAccess.Data
             modelBuilder.ApplyConfiguration(new JornulistEntityConfig());
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new AdminEntityConfig());
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new FeedBackEntityConfig());
             #endregion
             #region FristData
-/*            modelBuilder.Entity<Category>().HasData(
-                new Category() { Id = 1, Name = "action" },
-                new Category() { Id = 2, Name = "SciFi" },
-                new Category() { Id = 3, Name = "History" }
+            modelBuilder.Entity<Category>().HasData(
+                new Category() { Id = 1, Name = "action", capacity = 8 },
+                new Category() { Id = 2, Name = "SciFi", capacity = 8 },
+                new Category() { Id = 3, Name = "History", capacity = 8 }
                    );
             modelBuilder.Entity<Journalist>().HasData(
                new Journalist() { Id = 1, FirstName = "vahid", LastName = "ara", InsuranceNumber = 12, Role = Role.Journalist, PhoneNumber = "12" },
@@ -46,8 +49,7 @@ namespace News.DataAccess.Data
                     Title = "Fortune of Time",
                     Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                     Overview = "Overview test",
-                    PermitToPublish = true,
-                    NumberOfView = 0,
+                    PermitToPublish = false,
                     CategoryId = 2,
                     JournalistId = 2,
                     ImageUrl = ""
@@ -58,8 +60,7 @@ namespace News.DataAccess.Data
                     Title = "Persion Empire",
                     Description = "Persion Empire sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                     Overview = "Overview test",
-                    PermitToPublish = true,
-                    NumberOfView = 0,
+                    PermitToPublish = false,
                     CategoryId = 3,
                     JournalistId = 3,
                     ImageUrl = ""
@@ -70,13 +71,12 @@ namespace News.DataAccess.Data
                     Title = "Atomic Explotion",
                     Description = "Atomic Explotion sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                     Overview = "Overview test",
-                    PermitToPublish = true,
-                    NumberOfView = 0,
+                    PermitToPublish = false,
                     CategoryId = 1,
                     JournalistId = 1,
                     ImageUrl = ""
                 }
-                );*/
+                );
             #endregion
         }
     }

@@ -7,7 +7,7 @@
 namespace News.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class First : Migration
+    public partial class SeedData : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -35,7 +35,8 @@ namespace News.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    capacity = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,7 +70,6 @@ namespace News.DataAccess.Migrations
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Overview = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     PermitToPublish = table.Column<bool>(type: "bit", nullable: false),
-                    NumberOfView = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     JournalistId = table.Column<int>(type: "int", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -89,14 +89,36 @@ namespace News.DataAccess.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "FeedBacks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Comment = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    View = table.Column<int>(type: "int", nullable: false),
+                    Like = table.Column<int>(type: "int", nullable: false),
+                    DisLike = table.Column<int>(type: "int", nullable: false),
+                    IncidentId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FeedBacks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_FeedBacks_Incidents_IncidentId",
+                        column: x => x.IncidentId,
+                        principalTable: "Incidents",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.InsertData(
                 table: "Categories",
-                columns: new[] { "Id", "Name" },
+                columns: new[] { "Id", "Name", "capacity" },
                 values: new object[,]
                 {
-                    { 1, "action" },
-                    { 2, "SciFi" },
-                    { 3, "History" }
+                    { 1, "action", 8 },
+                    { 2, "SciFi", 8 },
+                    { 3, "History", 8 }
                 });
 
             migrationBuilder.InsertData(
@@ -111,13 +133,18 @@ namespace News.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Incidents",
-                columns: new[] { "Id", "CategoryId", "Description", "ImageUrl", "JournalistId", "NumberOfView", "Overview", "PermitToPublish", "Title" },
+                columns: new[] { "Id", "CategoryId", "Description", "ImageUrl", "JournalistId", "Overview", "PermitToPublish", "Title" },
                 values: new object[,]
                 {
-                    { 1, 2, "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ", "", 2, 0, "Overview test", true, "Fortune of Time" },
-                    { 2, 3, "Persion Empire sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ", "", 3, 0, "Overview test", true, "Persion Empire" },
-                    { 3, 1, "Atomic Explotion sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ", "", 1, 0, "Overview test", true, "Atomic Explotion" }
+                    { 1, 2, "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ", "", 2, "Overview test", false, "Fortune of Time" },
+                    { 2, 3, "Persion Empire sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ", "", 3, "Overview test", false, "Persion Empire" },
+                    { 3, 1, "Atomic Explotion sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ", "", 1, "Overview test", false, "Atomic Explotion" }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FeedBacks_IncidentId",
+                table: "FeedBacks",
+                column: "IncidentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Incidents_CategoryId",
@@ -135,6 +162,9 @@ namespace News.DataAccess.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Admins");
+
+            migrationBuilder.DropTable(
+                name: "FeedBacks");
 
             migrationBuilder.DropTable(
                 name: "Incidents");

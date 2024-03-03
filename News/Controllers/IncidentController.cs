@@ -67,7 +67,6 @@ namespace News.Controllers
                 obj.ImageUrl =fileName;
             }
             obj.PermitToPublish = false;
-            obj.NumberOfView = 0;
             obj.JournalistId = DataAccess.Data.CurrentUserId.CurrentId;
             if (ModelState.IsValid)
             {

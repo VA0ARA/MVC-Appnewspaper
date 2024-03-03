@@ -11,8 +11,8 @@ using News.DataAccess.Data;
 namespace News.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240227083956_First")]
-    partial class First
+    [Migration("20240303125334_SeedData")]
+    partial class SeedData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,6 +70,9 @@ namespace News.DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("capacity")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Categories", (string)null);
@@ -78,18 +81,53 @@ namespace News.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "action"
+                            Name = "action",
+                            capacity = 8
                         },
                         new
                         {
                             Id = 2,
-                            Name = "SciFi"
+                            Name = "SciFi",
+                            capacity = 8
                         },
                         new
                         {
                             Id = 3,
-                            Name = "History"
+                            Name = "History",
+                            capacity = 8
                         });
+                });
+
+            modelBuilder.Entity("News.Models.FeedBack", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<int>("DisLike")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IncidentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Like")
+                        .HasColumnType("int");
+
+                    b.Property<int>("View")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IncidentId");
+
+                    b.ToTable("FeedBacks", (string)null);
                 });
 
             modelBuilder.Entity("News.Models.Incident", b =>
@@ -112,9 +150,6 @@ namespace News.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("JournalistId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumberOfView")
                         .HasColumnType("int");
 
                     b.Property<string>("Overview")
@@ -146,9 +181,8 @@ namespace News.DataAccess.Migrations
                             Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                             ImageUrl = "",
                             JournalistId = 2,
-                            NumberOfView = 0,
                             Overview = "Overview test",
-                            PermitToPublish = true,
+                            PermitToPublish = false,
                             Title = "Fortune of Time"
                         },
                         new
@@ -158,9 +192,8 @@ namespace News.DataAccess.Migrations
                             Description = "Persion Empire sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                             ImageUrl = "",
                             JournalistId = 3,
-                            NumberOfView = 0,
                             Overview = "Overview test",
-                            PermitToPublish = true,
+                            PermitToPublish = false,
                             Title = "Persion Empire"
                         },
                         new
@@ -170,9 +203,8 @@ namespace News.DataAccess.Migrations
                             Description = "Atomic Explotion sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                             ImageUrl = "",
                             JournalistId = 1,
-                            NumberOfView = 0,
                             Overview = "Overview test",
-                            PermitToPublish = true,
+                            PermitToPublish = false,
                             Title = "Atomic Explotion"
                         });
                 });
@@ -239,6 +271,17 @@ namespace News.DataAccess.Migrations
                         });
                 });
 
+            modelBuilder.Entity("News.Models.FeedBack", b =>
+                {
+                    b.HasOne("News.Models.Incident", "incident")
+                        .WithMany("Feedbacks")
+                        .HasForeignKey("IncidentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("incident");
+                });
+
             modelBuilder.Entity("News.Models.Incident", b =>
                 {
                     b.HasOne("News.Models.Category", "Category")
@@ -261,6 +304,11 @@ namespace News.DataAccess.Migrations
             modelBuilder.Entity("News.Models.Category", b =>
                 {
                     b.Navigation("Incidents");
+                });
+
+            modelBuilder.Entity("News.Models.Incident", b =>
+                {
+                    b.Navigation("Feedbacks");
                 });
 
             modelBuilder.Entity("News.Models.Journalist", b =>

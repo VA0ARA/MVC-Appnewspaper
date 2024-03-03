@@ -17,9 +17,6 @@ namespace News.Models
         [MaxLength(250, ErrorMessage = "کوتاه تر بنویسید")]
         public string Overview { get; set; }
         public bool PermitToPublish { get; set; }
-/*        [Display(Name =" Number Of View ")]
-        [Range(1,1000)]*/
-        public int NumberOfView { get; set; }
         public int CategoryId { get; set; }
         [ValidateNever]
         public Category Category { get; set; }
@@ -28,6 +25,7 @@ namespace News.Models
         public Journalist Journalist { get; set; }
         [ValidateNever]
         public string? ImageUrl { get; set; }
+        public List<FeedBack> Feedbacks;
 
     }
 }

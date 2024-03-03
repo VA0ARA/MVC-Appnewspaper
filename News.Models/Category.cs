@@ -13,5 +13,6 @@ namespace News.Models
         public string Name { get; set; }
         [ValidateNever]
         public List<Incident>Incidents { get; set; }
+        public  int capacity { get; set; }
     }
 }

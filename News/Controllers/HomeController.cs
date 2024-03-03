@@ -19,9 +19,16 @@ namespace News.Controllers
 
         public IActionResult Index()
         {
+           List<Incident> IncidentsShow=new List<Incident>();
             List<Incident> Incidents = _unitOfWork.incident.GetAll().ToList();
-
-            return View(Incidents);
+            foreach(var item in Incidents)
+            {
+                if (item.PermitToPublish == true)
+                {
+                    IncidentsShow.Add(item);
+                }
+            }
+            return View(IncidentsShow);
         }
         public IActionResult Details(int id)
         {

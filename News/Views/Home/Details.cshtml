@@ -1,10 +1,10 @@
-﻿@model News.Models.Incident
+﻿@model News.Models.ModelView.IncidentFeedBackMV
     <div class="card shadow border-0 mt-4 mb-4">
         <div class="card-header bg-secondary bg-gradient text-light py-4">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h3 class="text-white text-uppercase">@Model.Title</h3>
-                    <p class="text-white-50 fw-semibold mb-0">by @Model.Overview</p>
+                    <h3 class="text-white text-uppercase">@Model.incidentobj.Title</h3>
+                <p class="text-white-50 fw-semibold mb-0">by @Model.incidentobj.Overview</p>
                 </div>
             </div>
         </div>
@@ -19,11 +19,11 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-lg-3 offset-lg-1 text-center mb-3">
-                        <img src="~/Image/Incident/@Model.ImageUrl"with="100%"class="rounded" />
+                    <img src="~/Image/Incident/@Model.incidentobj.ImageUrl" with="100%" class="rounded" />
                         </div>
                         <div class="col-12 col-lg-6 offset-lg-1">
                         <div class="col-12 text-center>
-                            <p class="text-white-50 fw-semibold mb-0">@Model.Description</p>
+                        <p class="text-white-50 fw-semibold mb-0">@Model.incidentobj.Description</p>
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
     <div class="row">
         <div class="col-12 text-center">
             <h5 class="text-white text-uppercase">Number Of View</h5>
-            <p class="text-white-50 fw-semibold mb-0">by @Model.Overview</p>
+            <p class="text-white-50 fw-semibold mb-0">by</p>
                 <button type="button" class="btn btn-dark">Like</button>
                 <p class="text-white text-uppercase">Number Of like</p>
                 <button type="button" class="btn btn-dark">DisLike</button>

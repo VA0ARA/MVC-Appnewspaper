@@ -8,6 +8,7 @@ namespace News.DataAccess.IReposetory
         IcategoryRepositry Category { get; }
         IJournalistRepositry jornalist { get; }
         IAdminRepositry admin { get; }
+        IFeedBackRepositry feedBack { get; }
         void Save();
     }
 }

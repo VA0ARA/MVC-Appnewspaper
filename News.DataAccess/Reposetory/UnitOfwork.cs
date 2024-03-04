@@ -10,6 +10,8 @@ namespace News.DataAccess.Reposetory
         public IJournalistRepositry jornalist { get; private set; }
         public IIncidentRepositry incident { get; private set; }
         public IAdminRepositry admin { get; private set; }
+        public IFeedBackRepositry feedBack { get; private set; }
+
         public UnitOfwork(ApplicationDbContext db)
         {
             _db = db;
@@ -17,6 +19,7 @@ namespace News.DataAccess.Reposetory
             jornalist = new JornalistRepositrey(_db);
             incident = new IncidentRepositrey(_db);
             admin = new AdminRepositrey(_db);
+            feedBack = new FeedBackRepositrey(_db);
         }
         public void Save()
         {

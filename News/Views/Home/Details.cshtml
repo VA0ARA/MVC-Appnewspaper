@@ -38,17 +38,34 @@
     <div class="row">
         <div class="col-12 text-center">
             <h5 class="text-white text-uppercase">Number Of View</h5>
-            <p class="text-white-50 fw-semibold mb-0">by</p>
-                <button type="button" class="btn btn-dark">Like</button>
+            <h5 class="text-white text-uppercase">@Model.FeedBackobj.View</h5>
+                <a asp-controller="Home" asp-action="likeButtom" class="btn btn-outline-primary border form-control">Like</a>
+@*                <button type="button" class="btn btn-dark">Like</button>*@
                 <p class="text-white text-uppercase">Number Of like</p>
-                <button type="button" class="btn btn-dark">DisLike</button>
+                <p class="text-white text-uppercase">@Model.FeedBackobj.Like</p>
+                <a asp-controller="Home" asp-action="DisLikeButtom" class="btn btn-outline-primary border form-control">DisLike</a>
+@*                <a href="@Url.Action("Like")>Like</a>*@
+@*                <button type="button" class="btn btn-dark">DisLike</button>*@
                 <p class="text-white text-uppercase">Number Of dislike</p>
+                <p class="text-white text-uppercase">@Model.FeedBackobj.DisLike</p>
         </div>
             <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <button class="btn btn-outline-dark" type="button">اعمال نظر</button>
-                </div>
-                <input type="text" class="form-control" placeholder="نظر شما چیست" aria-label="" aria-describedby="basic-addon1">
+                <form method="post" class="row">
+                    <div class="border p-3 mt-4">
+                        <div asp-validation-summary="All"></div>
+                        <div class="form-floating py-2  col-12">
+                            <input asp-for="@Model.FeedBackobj.Comment" class="form-control border-0 shadow" />
+                            <label asp-for="@Model.FeedBackobj.Comment" class="ms-2"></label>
+                            <span asp-validation-for="@Model.FeedBackobj.Comment" class="text-danger"></span>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col-6 col-3">
+                                <button type="submit" class="btn btn-primary form-control">ثبت نظر</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
             </div>
     </div>
 </div>
@@ -56,3 +73,10 @@
 
 
 
+
+
+
+@*<div class="input-group-prepend">
+    <button class="btn btn-outline-dark" type="button">اعمال نظر</button>
+</div>
+<input type="text" class="form-control" placeholder="نظر شما چیست" aria-label="" aria-describedby="basic-addon1">*@

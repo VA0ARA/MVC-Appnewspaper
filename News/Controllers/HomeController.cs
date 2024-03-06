@@ -2,6 +2,7 @@
 using News.DataAccess.IReposetory;
 using News.Models;
 using News.Models.ModelView;
+using News.Services;
 using System.Diagnostics;
 
 namespace News.Controllers
@@ -12,6 +13,7 @@ namespace News.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private IncidentFeedBackMV objDetail=new IncidentFeedBackMV();
+        private FeedBackinit FeedBackinitobj = new FeedBackinit();
         public HomeController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
         {
             _unitOfWork = unitOfWork;
@@ -34,21 +36,33 @@ namespace News.Controllers
         }
         public IActionResult Details(int id)
         {
+            //init Curent Feedback
             objDetail.incidentobj = _unitOfWork.incident.Get(u => u.Id == id);
-            objDetail.FeedBackobj = _unitOfWork.feedBack.Get(u => u.Id == id);
-            #region Feedback init
-            if (id == null || id == 0)
+            objDetail.FeedBackobj=_unitOfWork.feedBack.Get(u => u.IncidentId == objDetail.incidentobj.Id);
+            if (objDetail.FeedBackobj == null)
             {
-                return NotFound();
+                DataAccess.Data.CurrentFeedback.FirstInit();
+                DataAccess.Data.CurrentFeedback.CurentFeedbackobj.IncidentId = objDetail.incidentobj.Id;
+                objDetail.FeedBackobj = DataAccess.Data.CurrentFeedback.CurentFeedbackobj;
             }
-            Category? CategoryFormdb = _unitOfWork.Category.Get(u => u.Id == id);
-            if (CategoryFormdb == null)
-            {
-                return NotFound();
-            }
-            return View(CategoryFormdb);
-            #endregion
             return View(objDetail);
+        }
+        [HttpPost]
+        public IActionResult Details(IncidentFeedBackMV obj)
+        {
+            _unitOfWork.feedBack.Add(obj.FeedBackobj);
+            _unitOfWork.Save();
+            TempData["success"] = "Feed back submit success";
+            return RedirectToAction("Index");
+        }
+        public void likeButtom() {
+
+            FeedBackinitobj.AddLike();
+        
+        }
+        public void DisLikeButtom()
+        {
+            FeedBackinitobj.AddDislike();
         }
 
         public IActionResult Privacy()
